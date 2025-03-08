@@ -1,0 +1,5 @@
+not a good idea for the llm to ask what manual is this referrign to. instead its better to make this a separate system.
+i would advise for llm to give its understanding of the manual parts, but at the same time to provide the excerpts and
+page in the manual where it found the issue
+-why these embeddings. discuss in your notes every single line, why thta decisionwas made exactly and what are the potential challenges 
+how i set up the environment step by step
