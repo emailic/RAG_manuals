@@ -3,3 +3,10 @@ i would advise for llm to give its understanding of the manual parts, but at the
 page in the manual where it found the issue
 -why these embeddings. discuss in your notes every single line, why thta decisionwas made exactly and what are the potential challenges 
 how i set up the environment step by step
+-what is a namespace and why didnt u use it
+-why cloud aws and that region (cus only free one)
+
+-searching a query vector https://docs.pinecone.io/reference/api/2025-01/data-plane/query vs this type of search https://docs.pinecone.io/guides/data/query-data
+-installed poppler cus catterpillar counldnt load
+
+-why is record count on pinecone larger than the sum of pages of two pdfs
