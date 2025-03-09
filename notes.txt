@@ -9,4 +9,14 @@ how i set up the environment step by step
 -searching a query vector https://docs.pinecone.io/reference/api/2025-01/data-plane/query vs this type of search https://docs.pinecone.io/guides/data/query-data
 -installed poppler cus catterpillar counldnt load
 
--why is record count on pinecone larger than the sum of pages of two pdfs
+-assured that the total vector count is equal to  number of pages
+-why did i choose pages ass chunks, problemsatics with that, 
+- can a vector be reverted back to the original text, why didnt i add the value of the vector together with the vector to pinecone db (answer: cost)
+
+-Hlustration  data cleanup: ocr extrsacted pages had some funky working and characters.
+-order of results (first displaying page 125, then page 123...)
+
+-how did i decide on top k ? - i saw in your script what pagesshould be retrieved, i saw a total of 7 pages, 
+added an extra 1 for comfort. irl this is how i woud do it:
+
+-how did i choose metric and namespaces
