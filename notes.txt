@@ -20,3 +20,5 @@ how i set up the environment step by step
 added an extra 1 for comfort. irl this is how i woud do it:
 
 -how did i choose metric and namespaces
+
+-inefficiencies : one fucntion, the one on extracting text from pdf could be modular, this way we are rewriting two similar funcitons through two scripts
