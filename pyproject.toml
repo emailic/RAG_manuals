@@ -8,11 +8,11 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 openai = "^1.65.4"
-pinecone-client = "^6.0.0"
 pypdf2 = "^3.0.1"
 tqdm = "^4.67.1"
 sentence-transformers = "^3.4.1"
 python-dotenv = "^1.0.1"
+pinecone = "^6.0.1"
 
 
 [build-system]

@@ -4,17 +4,18 @@ import pinecone
 import openai
 from PyPDF2 import PdfReader
 from tqdm import tqdm
-from sentence_transformers import SentenceTransformer
+client = openai.OpenAI()
+#from sentence_transformers import SentenceTransformer
 
 # Initialize API keys
 load_dotenv()  # Load environment variables from .env
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_ENV = os.getenv("PINECONE_ENV")
+#PINECONE_ENV = os.getenv("PINECONE_ENV")
 INDEX_NAME = "rag-engine-manuals"
 
-if not OPENAI_API_KEY or not PINECONE_API_KEY or not PINECONE_ENV:
+if not PINECONE_API_KEY:
     raise ValueError("Missing required API keys. Check your .env file.")
 
 # Initialize OpenAI and Pinecone
@@ -26,8 +27,14 @@ if INDEX_NAME not in pinecone.list_indexes():
     pinecone.create_index(name=INDEX_NAME, metric="cosine", dimension=1536)  # OpenAI embeddings are 1536-d
 index = pinecone.Index(INDEX_NAME)
 
-# Load embedding model (alternative to OpenAI for local use)
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+# Function to clear the Pinecone index
+def clear_pinecone_index(index):
+    index.delete(delete_all=True)
+    print("✅ Pinecone index cleared.")
+
+# Run this before inserting new data
+clear_pinecone_index(index)
+
 
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_path):
@@ -41,8 +48,8 @@ def extract_text_from_pdf(pdf_path):
 
 # Process both PDFs
 pdfs = {
-    "Caterpillar 3500": "Caterpillar-3500-generator-sets-operation-and-maintenance-manual.pdf",
-    "Waukesha VGF": "Waukesha_VGF_f18g.pdf"
+    "Caterpillar 3500": "manuals/Caterpillar-3500-generator-sets-operation-and-maintenance-manual.pdf",
+    "Waukesha VGF": "manuals/Waukesha_VGF_f18g.pdf"
 }
 
 # Store document embeddings
@@ -50,7 +57,7 @@ docs = []
 for manual, pdf_path in pdfs.items():
     text_chunks = extract_text_from_pdf(pdf_path)
     for text, page in tqdm(text_chunks, desc=f"Indexing {manual}"):
-        embedding = openai.Embedding.create(input=text, model="text-embedding-ada-002")
+        embedding = client.embeddings.create(input=text, model="text-embedding-ada-002")
         vector = embedding["data"][0]["embedding"]
         metadata = {"source": manual, "page": page}
         index.upsert(vectors=[("doc_{}_{}".format(manual, page), vector, metadata)])
