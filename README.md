@@ -107,3 +107,7 @@ You will be prompted to choose between the retrieved manuals (e.g., `Caterpillar
 - **choose_manual(manuals_retrieved)**: Allows the user to select the relevant manual from the results.
 - **main**: Retrieves chunks (pages) relevant to the selected manual.
 
+## Resources  
+
+- **[Miro Board](https://miro.com/app/board/uXjVITG974s=/?share_link_id=54475438938)**  
+- **[Notion File](https://www.notion.so/RAG-for-Agriculture-Manuals-1b231296675980aebfade95cd7456ae9?pvs=4e)**  
