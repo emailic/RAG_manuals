@@ -80,7 +80,7 @@ if __name__ == "__main__":
     }
 
     print(f"Using index: {INDEX_NAME}")
-    docs = []
+    docs = [] #not necessary, using it for testing the script without burning OpenAI's credits on embeddings
     
     for manual, pdf_path in pdfs.items():
         text_chunks = extract_text_from_pdf(pdf_path)
