@@ -72,7 +72,7 @@ def extract_text_from_pdf(pdf_path):
 
 if __name__ == "__main__":
     index = initialize_pinecone()
-    clear_pinecone_index(index)
+    #clear_pinecone_index(index)
 
     pdfs = {
         "Caterpillar 3500": "manuals/Caterpillar-3500-generator-sets-operation-and-maintenance-manual.pdf",
@@ -86,10 +86,10 @@ if __name__ == "__main__":
         text_chunks = extract_text_from_pdf(pdf_path)
         
         for text, page in tqdm(text_chunks, desc=f"Indexing {manual}"):
-            embedding = client.embeddings.create(input=text, model="text-embedding-3-small")
-            vector = embedding.data[0].embedding
+            #embedding = client.embeddings.create(input=text, model="text-embedding-3-small")
+            #vector = embedding.data[0].embedding
             metadata = {"source": manual, "page": page}
-            index.upsert(vectors=[(f"doc_{manual}_page_{page}", vector, metadata)])
+            #index.upsert(vectors=[(f"doc_{manual}_page_{page}", vector, metadata)])
             docs.append((text, manual, page))
     
     print("Manuals chunked, vectorized, and upserted into Pinecone database.")
