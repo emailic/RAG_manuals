@@ -4,6 +4,11 @@
 
 This project implements a Retrieval-Augmented Generation (RAG) system that indexes manuals using Pinecone and OpenAI, processes PDF documents (both searchable and scanned), and provides answers based on the indexed content. It utilizes a combination of Pinecone for vector storage and search, OpenAI's embeddings for querying, and Optical Character Recognition (OCR) via Tesseract to process non-searchable PDFs.
 
+## Resources  
+
+- **[Miro Board](https://miro.com/app/board/uXjVIE2Elfg=/?share_link_id=974868060599)**  
+- **[Medium Article](https://medium.com/@ema.ilic9/building-a-rag-system-for-heavy-machinery-engine-manuals-5aacf9043892)**  
+
 ## Prerequisites
 
 - Python 3.12
@@ -107,7 +112,4 @@ You will be prompted to choose between the retrieved manuals (e.g., `Caterpillar
 - **choose_manual(manuals_retrieved)**: Allows the user to select the relevant manual from the results.
 - **main**: Retrieves chunks (pages) relevant to the selected manual.
 
-## Resources  
 
-- **[Miro Board]()**  
-- **[Notion File]()**  
